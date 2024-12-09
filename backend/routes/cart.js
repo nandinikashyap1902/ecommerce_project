@@ -29,9 +29,9 @@ console.log({ productId, quantity })
       }
   
       // Find or create cart for the authenticated user
-      let cart = await Cart.findOne({ userId: req.user._id });
+      let cart = await Cart.findOne({ userId: req.user.id });
       if (!cart) {
-        cart = new Cart({ userId: req.user._id, items: [] });
+        cart = new Cart({ userId: req.user.id, items: [] });
       }
   
       // Update or add product to the cart

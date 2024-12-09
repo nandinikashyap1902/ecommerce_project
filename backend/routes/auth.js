@@ -32,18 +32,14 @@ router.post("/signin", async (req, res) => {
     const isMatch = await user.matchPassword(password);
     if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
-      const token = jwt.sign({ id: user._id,role: user.role }, process.env.JWT_SECRET, { expiresIn: "1h" }, (err, token) => {
-        if (err) {
-            console.error('JWT signing error:', err);
-            return res.status(500).json({ message: 'Authentication failed. Please try again.' });
-        } 
-        res.cookie('token', token, {
-            httpOnly: true,  
-            secure: false,
-            
-        })
-    });
+    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: "1h" });
 
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: false,
+            sameSite: 'strict', 
+        }).status(200)
+    
     res.json({ token, role: user.role });
   } catch (error) {
     res.status(500).json({ message: "Server error" });

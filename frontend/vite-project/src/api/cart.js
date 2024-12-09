@@ -1,20 +1,14 @@
 import axios from "axios";
 export const addToCart = async (productId, quantity) => {
   try {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      throw new Error("User is not authenticated");
-    }
+   
 
     const response = await axios.post(
       "http://localhost:5000/api/add",
       { productId, quantity },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
+      { withCredentials: true, headers: {
+        "Content-Type": "application/json",
+      },}
     );
 
     return response;

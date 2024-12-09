@@ -14,7 +14,10 @@ function SignUp() {
     e.preventDefault();
     try {
         const response = await signUp(form);
-        console.log("SignUp Success:", response.data);
+      // console.log("SignUp Success:", response.data);
+      if (response.ok) {
+        alert('user created')
+      }
       } catch (error) {
         console.error("SignUp Error:", error.response.data.message);
       }
