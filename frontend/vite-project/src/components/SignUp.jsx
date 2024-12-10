@@ -2,9 +2,10 @@
 import '../CSS/Form.css'
 import { useState } from "react";
 import { signUp } from "../api/auth";
+import { useNavigate } from "react-router-dom";
 function SignUp() {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
@@ -14,10 +15,12 @@ function SignUp() {
     e.preventDefault();
     try {
         const response = await signUp(form);
-      // console.log("SignUp Success:", response.data);
-      if (response.ok) {
+       console.log("SignUp Success:", response);
+      if (response.status===201) {
         alert('user created')
-      }
+        navigate("/login");
+        return;
+      } 
       } catch (error) {
         console.error("SignUp Error:", error.response.data.message);
       }

@@ -15,7 +15,7 @@ router.post("/signup", async (req, res) => {
     const user = await User.create({ username, email, password });
     
 
-    res.status(201).json({ token, user: { id: user._id, username, email } });
+    res.status(201).json({ user: { id: user._id, username, email } });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }
