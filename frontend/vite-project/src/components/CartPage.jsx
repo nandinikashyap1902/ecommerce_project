@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { placeOrder } from "../api/Order";
 function CartPage() {
   const { cart, updateCart } = useContext(CartContext);
-  console.log(cart)
+
   const navigate = useNavigate();
 
   const handlePlaceOrder = async () => {
-    // This could be a modal or a prompt to collect the shipping address
+    
     const shippingAddress = prompt("Enter your shipping address:");
 
     if (!shippingAddress) {
@@ -19,8 +19,8 @@ function CartPage() {
     try {
       const data = await placeOrder(shippingAddress);
       alert("Order placed successfully!");
-      updateCart({ items: [] }); // Clear cart in frontend after placing the order
-      navigate("/orders"); // Redirect to orders page to show the placed order
+      updateCart({ items: [] }); 
+      
     } catch (error) {
       console.error("Error placing order:", error);
       alert("Failed to place order.");

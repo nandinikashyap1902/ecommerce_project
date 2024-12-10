@@ -2,14 +2,22 @@
 import { addToCart } from "../api/cart";
 import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 function ProductCard({ product }) {
+  const navigate = useNavigate();
   const { updateCart } = useContext(CartContext); 
   const handleAddToCart = async () => {
     try {
-     
-      const response = await addToCart(product._id, product.stock);
+      const token = localStorage.getItem("token"); 
+
+      if (!token) {
+        alert("Please log in to add products to the cart.");
+        navigate("/login"); 
+        return;
+      }
+      const response = await addToCart(product._id, 1);
       alert("Product added to cart!");
-      console.log("Cart Response:", response.data);
+     
       updateCart(response.data.cart);
       
     } catch (error) {

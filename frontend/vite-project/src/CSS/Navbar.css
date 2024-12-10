@@ -1,3 +1,6 @@
+body{
+  margin:0
+}
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -5,6 +8,7 @@
     padding: 10px 20px;
     background-color: #0288d1;
     color: white;
+    margin:0;
   }
   
   .navbar .logo {
@@ -27,5 +31,16 @@
   
   .nav-links a:hover {
     text-decoration: underline;
+  }
+  .navbar .logout-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: underline;
+  }
+  .navbar .logout-btn:hover {
+    color: #ccc;
   }
   

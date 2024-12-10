@@ -1,6 +1,6 @@
 
 import { Routes, Route } from "react-router-dom";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Navbar";
 import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
@@ -9,6 +9,7 @@ import ProductList from "./components/ProductList";
 import ProductDetails from "./components/ProductDetails";
 
 import AddProductPage from "./components/AddProductPage";
+import PlaceOrderPage from "./components/PlaceOrder";
 function App() {
   return (
     <div>
@@ -21,7 +22,7 @@ function App() {
         <Route path="/" element={<ProductList />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
         <Route path="/add-product" element={<AddProductPage />} />
-        
+        <Route path="/orders" element={<PlaceOrderPage/>}></Route>
       </Routes>
     </div>
   );

@@ -8,11 +8,11 @@ const router = express.Router();
 // Add to Cart
 router.post("/add", verifyToken, async (req, res) => {
   const { productId, quantity } = req.body;
-console.log({ productId, quantity })
+console.log({quantity })
  
     try {
       const { productId, quantity } = req.body;
-  
+ 
       // Validate request body
       if (!productId || !quantity) {
         return res.status(400).json({ message: "Product ID and quantity are required." });
@@ -20,6 +20,7 @@ console.log({ productId, quantity })
   
       // Validate product existence
       const product = await Product.findById(productId);
+      console.log(product)
       if (!product) {
         return res.status(404).json({ message: "Product not found." });
       }

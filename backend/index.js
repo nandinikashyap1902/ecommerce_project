@@ -21,10 +21,13 @@ const cartRoutes = require("./routes/cart");
 app.use("/api", cartRoutes);
 const adminRoutes = require("./routes/admin");
 app.use("/api/admin", adminRoutes);
-const productRoutes = require("./routes/product");
+const productRoutes = require("./routes/Product");
 app.use("/api", productRoutes);
 const placeorder = require('./routes/PlaceOrder')
-app.use('/api',placeorder)
+app.use('/api', placeorder)
+const logoutRoute = require("./routes/Logout");
+app.use("/api", logoutRoute);
+
 // MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI,)

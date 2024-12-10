@@ -13,23 +13,29 @@ function Login() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     console.log("Login Data:", form);
-      // Handle form submission
+     
       try {
         const response = await signIn(form);
-          console.log("Login Success:", response.data);
           const { token, role } = response.data;
-
       // Save token in localStorage
       localStorage.setItem("token", token);
 
-      // Redirect based on role
+       
+        if (response.status!==200) {
+          alert('wrong credentials')
+          return
+        }
+        
       if (role === "admin") {
         navigate("/add-product");
       } else {
+        alert('login successfull')
         navigate("/");
+        
       }
       } catch (error) {
         console.error("Login Error:", error.response.data.message);
+        alert("Wrong credentials"); 
       }
   };
 
