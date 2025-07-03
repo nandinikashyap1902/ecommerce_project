@@ -10,6 +10,7 @@ import ProductDetails from "./components/ProductDetails";
 
 import AddProductPage from "./components/AddProductPage";
 import PlaceOrderPage from "./components/PlaceOrder";
+import PaymentSuccess from "./components/PaymentSuccess";
 function App() {
   return (
     <div>
@@ -23,6 +24,7 @@ function App() {
         <Route path="/product/:productId" element={<ProductDetails />} />
         <Route path="/add-product" element={<AddProductPage />} />
         <Route path="/orders" element={<PlaceOrderPage/>}></Route>
+        <Route path="/payment-success" element={<PaymentSuccess />} />
       </Routes>
     </div>
   );
