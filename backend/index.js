@@ -27,6 +27,8 @@ const placeorder = require('./routes/PlaceOrder')
 app.use('/api', placeorder)
 const logoutRoute = require("./routes/Logout");
 app.use("/api", logoutRoute);
+const paymentRoutes = require("./routes/payment");
+app.use("/api/payment", paymentRoutes);
 
 // MongoDB Connection
 mongoose
